@@ -9,12 +9,12 @@ module.exports = function (config) {
         // list of files / patterns to load in the browser
         files: [
             'main/bower_components/platform/platform.js',
+            
+            'test/karma-loader.js',
 
-            'main/components/**/*.html',
+            'node_modules/chai/chai.js',
 
             'main/components/**/*.test.js',
-
-            'test/karma-loader.js',
 
             { pattern: 'main/bower_components/**/*', included: false },
             { pattern: 'main/components/**/*', included: false },
@@ -34,7 +34,7 @@ module.exports = function (config) {
         // level of logging
         // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN ||
         //                  config.LOG_INFO || config.LOG_DEBUG
-        logLevel: config.LOG_DEBUG,
+        logLevel: config.LOG_ERROR,
 
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
@@ -42,7 +42,7 @@ module.exports = function (config) {
 
         // Continuous Integration mode
         // if true, Karma captures browsers, runs the tests and exits
-        singleRun: false,
+        singleRun: false
 
     });
 };
