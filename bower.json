@@ -1,0 +1,16 @@
+{
+  "name": "polymer-karma-test",
+  "main": "index.html",
+  "license": "Copyright",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#0.2.4"
+  }
+}
