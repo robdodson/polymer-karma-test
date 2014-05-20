@@ -3,28 +3,7 @@ polymer-karma-test
 
 This repo is designed as a simple boilerplate for having multiple polymer elements and Karma test runner.
 
+`polymer.html` is loaded in the `test/karma-loader.js`, and after `polymer-ready` fires, mocha will start running.
 
-### Install
-`npm i`
-
-### Run
-`npm t`
-
-## Known Issues
-
-Karma fails currently, it seems as though Polymer loads the dependencies without any kind of resolution - so the "a-element" is getting loaded twice. See the logs:
-
-```bash
-DEBUG [web-server]: serving (cached): /Users/keith/Projects/polymer-karma-test/main/components/a/a.html
-DEBUG [web-server]: serving (cached): /Users/keith/Projects/polymer-karma-test/main/components/b/b.html
-DEBUG [web-server]: serving (cached): /Users/keith/Projects/polymer-karma-test/main/bower_components/polymer/polymer.html
-DEBUG [web-server]: serving (cached): /Users/keith/Projects/polymer-karma-test/main/components/a/a.html
-DEBUG [web-server]: serving (cached): /Users/keith/Projects/polymer-karma-test/main/bower_components/polymer/polymer-body.html
-DEBUG [web-server]: serving (cached): /Users/keith/Projects/polymer-karma-test/main/bower_components/polymer/polymer.js
-Firefox 29.0.0 (Mac OS X 10.9) ERROR
-  Error: DuplicateDefinitionError: a type with name 'a-element' is already registered
-  at /Users/keith/Projects/polymer-karma-test/main/bower_components/platform/platform.js:15
-
-Firefox 29.0.0 (Mac OS X 10.9): Executed 0 of 2 ERROR (0 secs / 0 secs)
-DEBUG [karma]: Run complete, exitting.
-```
+The tests in `main/components/a/a.test.js` and `main/components/b/b.test.js` each manage adding their own `link` tags to the document in the `before` setup block. This setup is quick and dirty but you could probably create a function that takes an array of imports and loads them all into the `head` for you.
+You have to listen for the load even from the `link` tag to know when it's ok to start testing.
